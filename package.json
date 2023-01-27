@@ -1,0 +1,16 @@
+{
+    "name": "tmdb-test",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "watch": "nodemon index.js --ext '*'"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "tmdb-ts": "^0.1.1"
+    }
+}
