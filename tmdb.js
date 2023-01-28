@@ -38,8 +38,8 @@ export default class TMDB {
             const date = new Date().toUTCString();
             const prefix = `[TMDB: ${date}]`;
             const fullURL = `${request?.baseURL ?? ""}${request?.url}`;
-            const methodString = request?.method?.toUpperCase() ?? "GET"
-            let message = `${prefix} ${methodString} to ${fullURL}`
+            const methodString = request?.method?.toUpperCase() ?? "GET";
+            let message = `${prefix} ${methodString} to ${fullURL}`;
             if (request?.data) {
                 message += ` with body:\n${request.data}`;
             }
@@ -136,7 +136,7 @@ export default class TMDB {
                 "Authorization": `Bearer ${this.apiKey}`,
                 "Content-Type": "application/json;charset=utf-8"
             },
-            // params that are null or undefined are not rendered in the URL.
+            // "params that are null or undefined are not rendered in the URL."
             params: queryParams,
             data: body
         });

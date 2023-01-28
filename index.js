@@ -20,14 +20,14 @@ const petersFirstListID = "8237947";
 
 const tmdb = new TMDB(apiKey);
 
-tmdb.movieDetails(harryPotterMovieID).then((movieDetails) => {
-    console.log(`movieDetails.title: ${movieDetails.title}`);
-});
+// tmdb.movieDetails(harryPotterMovieID).then((movieDetails) => {
+//     console.log(`movieDetails.title: ${movieDetails.title}`);
+// });
 
-tmdb.getList(petersFirstListID, {
-    page: 1,
-    sortBy: "original_order.asc"
-})
-.then((list) => {
-    console.log(`list.results[0].overview: ${list.results[0].overview}`);
-});
+// tmdb.getList(petersFirstListID, {
+//     page: 1,
+//     sortBy: "original_order.asc"
+// })
+// .then((list) => {
+//     console.log(`list.results[0].overview: ${list.results[0].overview}`);
+// });
