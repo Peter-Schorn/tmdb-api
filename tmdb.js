@@ -8,11 +8,22 @@ import axios from "axios";
  * @typedef { import("./types").UserList } UserList
  */
 
+/**
+ * A class that provides access to the TMDB API.
+ *
+ * https://developers.themoviedb.org/3/getting-started/introduction
+ */
 export default class TMDB {
 
     static apiBase = "https://api.themoviedb.org";
 
+    /**
+     * Creates an instance of TMDB.
+     *
+     * @param {string} apiKey the API key
+     */
     constructor(apiKey) {
+
         if (!apiKey) {
             throw new Error(`apiKey cannot be '${apiKey}'`);
         }
@@ -54,24 +65,26 @@ export default class TMDB {
 
     /**
      * Gets a user's list by id. Private lists can only be accessed by their
-     * owners
+     * owners.
      *
      * https://developers.themoviedb.org/4/list/get-list
      *
      * @param {string | Number} listID the list id
-     * @param {Number | null | undefined=} page default 1
-     * @param { ListSortBy | null | undefined=} sortBy how to sort the list:
-     * one of "original_order.asc", "original_order.desc", "release_date.asc",
-     * "release_date.desc", "title.asc", "title.desc", "vote_average.asc", or
-     * "vote_average.desc"
-     * @param {string | null | undefined=} language the language
+     * @param {{
+     *     page?: Number | null | undefined,
+     *     sortBy?: ListSortBy | null | undefined,
+     *     language?: string | null | undefined
+     * } | null | undefined} options the options for this endpoint:
+     *  page: the page of results to retrieve;
+     *  sortBy: how to sort the list;
+     *  language: the language for the list
      * @returns {Promise<UserList>} a movie or tv show list
      */
-    async getList(listID, page, sortBy, language) {
+    async getList(listID, options) {
         const queryParams = {
-            page: page,
-            language: language,
-            sortBy: sortBy
+            page: options?.page,
+            language: options?.language,
+            sortBy: options?.sortBy
         };
         return await this._apiRequest(
             "GET",
