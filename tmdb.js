@@ -8,7 +8,7 @@ import axios from "axios";
  * @typedef { import("./types").UserList } UserList
  */
 
-export default class TMDB2 {
+export default class TMDB {
 
     static apiBase = "https://api.themoviedb.org";
 
@@ -88,7 +88,7 @@ export default class TMDB2 {
 
         // https://axios-http.com/docs/req_config
         const response = await this.httpClient.request({
-            baseURL: TMDB2.apiBase,
+            baseURL: TMDB.apiBase,
             url: path,
             method: method,
             headers: {
