@@ -34,9 +34,11 @@ export interface MovieDetails {
     budget: number;
     genres: Genre[];
     homepage: string;
+    /** The id of the movie. */
     id: number;
     imdb_id: string;
     original_language: string;
+    /** The original title of the movie */
     original_title: string;
     overview: string;
     popularity: number;
@@ -59,8 +61,15 @@ export interface MovieDetails {
         iso_639_1: string;
         name: string;
     }[];
-    status: "Rumored" | "Planned" | "In Production" | "Post Production" | "Released" | "Canceled";
+    status:
+        "Rumored" |
+        "Planned" |
+        "In Production" |
+        "Post Production" |
+        "Released" |
+        "Canceled";
     tagline: string;
+    /** The title of the movie. */
     title: string;
     video: boolean;
     vote_average: number;
@@ -95,10 +104,12 @@ type ListSortBy = "original_order.asc" | "original_order.desc" | "release_date.a
 export interface UserList {
 
     poster_path: string;
+
+    /** The id of the list. */
     id: number;
 
     /**
-     * The file path for the backdrop. See https://developers.themoviedb.org/3/getting-started/images
+     * The file path for the backdrop. See https://developers.themoviedb.org/3/getting-started/images.
      */
     backdrop_path: string | null;
 
@@ -126,6 +137,7 @@ export interface UserList {
 export interface UserListMovie {
     poster_path: string;
     adult: boolean;
+    /** The overview for the movie */
     overview: string;
     release_date: string;
     original_title: string;

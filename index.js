@@ -16,6 +16,7 @@ const tmdb = new TMDB(apiKey);
 
 const movieDetails = await tmdb.movieDetails(harryPotterMovieID);
 
+console.log(movieDetails.id);
 console.log(movieDetails.backdrop_path);
 
 const list = await tmdb.getList(petersFirstListID, {
