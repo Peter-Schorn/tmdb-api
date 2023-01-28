@@ -1,4 +1,3 @@
-import axios from "axios";
 import TMDB from "./tmdb.js";
 import * as dotenv from "dotenv";
 

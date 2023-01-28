@@ -36,9 +36,10 @@ export default class TMDB {
             const date = new Date().toUTCString();
             const prefix = `[TMDB: ${date}]`;
             const fullURL = `${request?.baseURL ?? ""}${request?.url}`;
-            let message = `${prefix} ${request?.method?.toUpperCase() ?? "GET"} to ${fullURL}`
+            const methodString = request?.method?.toUpperCase() ?? "GET"
+            let message = `${prefix} ${methodString} to ${fullURL}`
             if (request?.data) {
-                message += `with body:\n${request.data}`;
+                message += ` with body:\n${request.data}`;
             }
             console.log(message);
 
@@ -81,23 +82,33 @@ export default class TMDB {
      * @returns {Promise<UserList>} a movie or tv show list
      */
     async getList(listID, options) {
-        const queryParams = {
-            page: options?.page,
-            language: options?.language,
-            sortBy: options?.sortBy
-        };
         return await this._apiRequest(
             "GET",
             `/4/list/${listID}`,
-            queryParams
+            options  // query params
         );
     }
 
     // MARK: Authorization
 
+    // todo
+
     // MARK: Wrapper Methods
 
+    /**
+     * Makes an HTTP request to the API.
+     *
+     * @param {string} method the http method
+     * @param {string} path the path of the endpoint, which will be appended to
+     * `TMDB.apiBase`.
+     * @param {Object | null | undefined} [queryParams] the query parameters for
+     * the endpoint
+     * @param {Object | null | undefined} [body] the body of the request
+     * @returns {Promise<any>} the response body from the server
+     */
     async _apiRequest(method, path, queryParams, body) {
+
+        const bodyString = body ? JSON.stringify(body) : null;
 
         // https://axios-http.com/docs/req_config
         const response = await this.httpClient.request({
@@ -110,11 +121,10 @@ export default class TMDB {
             },
             // params that are null or undefined are not rendered in the URL.
             params: queryParams,
-            data: body
+            data: bodyString
         });
 
         return response.data;
     }
-
 
 }
