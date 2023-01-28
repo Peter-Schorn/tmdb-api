@@ -72,19 +72,22 @@ export interface Genre {
     name: string;
 }
 
-/*
-original_order.asc, original_order.desc, release_date.asc, release_date.desc, title.asc, title.desc, vote_average.asc, vote_average.desc
-*/
-export enum ListSortBy {
-    OriginalOrderAsc = "original_order.asc",
-    OriginalOrderDesc = "original_order.desc",
-    ReleaseDateAsc = "release_date.asc",
-    ReleaseDateDesc = "release_date.desc",
-    TitleAsc = "title.asc",
-    TitleDesc = "title.desc",
-    VoteAverageAsc = "vote_average.asc",
-    VoteAverageDesc = "vote_average.desc"
-}
+
+/**
+ * How to sort a user's list.
+ */
+type ListSortBy = "original_order.asc" | "original_order.desc" | "release_date.asc" | "release_date.desc" | "title.asc" | "title.desc" | "vote_average.asc" | "vote_average.desc";
+
+// export enum ListSortBy {
+//     OriginalOrderAsc = "original_order.asc",
+//     OriginalOrderDesc = "original_order.desc",
+//     ReleaseDateAsc = "release_date.asc",
+//     ReleaseDateDesc = "release_date.desc",
+//     TitleAsc = "title.asc",
+//     TitleDesc = "title.desc",
+//     VoteAverageAsc = "vote_average.asc",
+//     VoteAverageDesc = "vote_average.desc"
+// }
 
 /**
  * A list in a user's library

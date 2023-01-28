@@ -40,7 +40,7 @@ console.log(movieDetails.backdrop_path);
 const list = await tmdb2.getList(
     petersFirstListID,
     1,
-    "original_order.asc"
+    "vote_average.asc"
 );
 
 console.log(list.results[0].overview);

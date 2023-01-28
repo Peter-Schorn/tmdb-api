@@ -38,7 +38,6 @@ export default class TMDB2 {
 
     // MARK: Endpoints
 
-
     /**
      * Get the primary information about a movie.
      *
@@ -60,9 +59,9 @@ export default class TMDB2 {
      * https://developers.themoviedb.org/4/list/get-list
      *
      * @param {string | Number} listID the list id
-     * @param {Number | null | undefined} page default 1
-     * @param { string | null | undefined } sortBy how to sort the list: one of
-     * "original_order.asc", "original_order.desc", "release_date.asc",
+     * @param {Number | null | undefined=} page default 1
+     * @param { ListSortBy | null | undefined=} sortBy how to sort the list:
+     * one of "original_order.asc", "original_order.desc", "release_date.asc",
      * "release_date.desc", "title.asc", "title.desc", "vote_average.asc", or
      * "vote_average.desc"
      * @param {string | null | undefined=} language the language
