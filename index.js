@@ -14,6 +14,8 @@ const harryPotterMovieID = "671";
 // https://www.themoviedb.org/list/8237947
 const petersFirstListID = "8237947";
 
+const wolfOfWallStreetMovieID = "106646";
+
 const tmdb = new TMDB(apiKey);
 
 tmdb.movieDetails(harryPotterMovieID).then((movieDetails) => {

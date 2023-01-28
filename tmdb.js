@@ -6,6 +6,8 @@ import axios from "axios";
  * @typedef { import("./types").MovieDetails } MovieDetails
  * @typedef { import("./types").ListSortBy } ListSortBy
  * @typedef { import("./types").UserList } UserList
+ * @typedef { import("./types").ListItem } ListItem
+ * @typedef { import("./types").AddToListResponse } AddToListResponse
  */
 
 /**
@@ -89,6 +91,23 @@ export default class TMDB {
         );
     }
 
+    /**
+     * Add an item to a user's list.
+     *
+     * https://developers.themoviedb.org/4/list/add-items
+     *
+     * @param {string | Number} listID the list id
+     * @param {string} sessionID the session id
+     * @param {ListItem[]} items the items to add to the list
+     * @returns {Promise<AddToListResponse>} an object that describes whether or
+     * not each item was successfully added to the list
+     */
+    async addToList(listID, sessionID, items) {
+        return await this._apiRequest(
+            "POST", `/4/list/${listID}/items`, undefined, items
+        );
+    }
+
     // MARK: Authorization
 
     // todo
@@ -108,8 +127,6 @@ export default class TMDB {
      */
     async _apiRequest(method, path, queryParams, body) {
 
-        const bodyString = body ? JSON.stringify(body) : null;
-
         // https://axios-http.com/docs/req_config
         const response = await this.httpClient.request({
             baseURL: TMDB.apiBase,
@@ -121,7 +138,7 @@ export default class TMDB {
             },
             // params that are null or undefined are not rendered in the URL.
             params: queryParams,
-            data: bodyString
+            data: body
         });
 
         return response.data;

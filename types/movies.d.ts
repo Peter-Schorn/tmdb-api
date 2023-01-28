@@ -81,22 +81,20 @@ export interface Genre {
     name: string;
 }
 
+// https://developers.themoviedb.org/3/trending/get-trending
+export type MediaType = "all" | "movie" | "tv" | "person";
+
 
 /**
  * How to sort a user's list.
  */
-type ListSortBy = "original_order.asc" | "original_order.desc" | "release_date.asc" | "release_date.desc" | "title.asc" | "title.desc" | "vote_average.asc" | "vote_average.desc";
+export type ListSortBy = "original_order.asc" | "original_order.desc" | "release_date.asc" | "release_date.desc" | "title.asc" | "title.desc" | "vote_average.asc" | "vote_average.desc";
 
-// export enum ListSortBy {
-//     OriginalOrderAsc = "original_order.asc",
-//     OriginalOrderDesc = "original_order.desc",
-//     ReleaseDateAsc = "release_date.asc",
-//     ReleaseDateDesc = "release_date.desc",
-//     TitleAsc = "title.asc",
-//     TitleDesc = "title.desc",
-//     VoteAverageAsc = "vote_average.asc",
-//     VoteAverageDesc = "vote_average.desc"
-// }
+/** The details of a movie or tv show that will be added to a user's list. */
+export interface ListItem {
+    media_type: string;
+    media_id: string | Number;
+}
 
 /**
  * A list in a user's library
@@ -180,4 +178,15 @@ export interface UserListTVShow {
     // The name of the TV show.
     name: string;
     origin_name: string;
+}
+
+export interface AddToListResponse {
+    status_message: string;
+    status_code: integer;
+    success: Boolean;
+    results: {
+        media_type: string;
+        media_id: string | Number;
+        success: Boolean;
+    }[];
 }
