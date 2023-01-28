@@ -4,6 +4,9 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const apiKey = process.env.TMDB_API_KEY_V4;
+if (!apiKey) {
+    throw new Error("couldn't get API key from environment");
+}
 
 // https://www.themoviedb.org/movie/671-harry-potter-and-the-philosopher-s-stone
 const harryPotterMovieID = "671";
@@ -13,15 +16,14 @@ const petersFirstListID = "8237947";
 
 const tmdb = new TMDB(apiKey);
 
-const movieDetails = await tmdb.movieDetails(harryPotterMovieID);
-
-console.log(movieDetails.id);
-console.log(movieDetails.backdrop_path);
-
-const list = await tmdb.getList(petersFirstListID, {
-    page: 1,
-    sortBy: "original_order.asc"
+tmdb.movieDetails(harryPotterMovieID).then((movieDetails) => {
+    console.log(movieDetails.title);
 });
 
-console.log(list.results[0].overview);
-
+tmdb.getList(petersFirstListID, {
+    page: 1,
+    sortBy: "original_order.asc"
+})
+.then((list) => {
+    console.log(list.results[0].overview);
+});

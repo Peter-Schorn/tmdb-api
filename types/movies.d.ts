@@ -117,6 +117,7 @@ export interface UserList {
     public: boolean;
     revenue: string;
     page: number;
+    /** An array of the movies and tv shows in the list */
     results: (UserListMovie | UserListTVShow)[];
     object_ids?: any;
     iso_639_1: string;

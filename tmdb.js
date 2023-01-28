@@ -75,7 +75,7 @@ export default class TMDB {
      *     page?: Number | null | undefined,
      *     sortBy?: ListSortBy | null | undefined,
      *     language?: string | null | undefined
-     * } | null | undefined} options the options for this endpoint:
+     * } | null | undefined} [options] the options for this endpoint:
      *  page: the page of results to retrieve;
      *  sortBy: how to sort the list;
      *  language: the language for the list
